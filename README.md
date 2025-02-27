@@ -131,10 +131,14 @@ The idea is to add structures called "capsules" to a [convolutional neural netwo
 
 ## CNN
 
-A CNN uses [convolutions](https://en.wikipedia.org/wiki/Convolution) to connected extract features from local regions of an input. Most CNNs contain a combination of convolutional, [pooling](#pooling) and [affine layers](#affine-layer). CNNs have gained popularity particularly through their excellent performance on visual recognition tasks, where they have been setting the state of the art for several years.
+A Convolutional Neural Network (CNN) uses [convolutions](https://en.wikipedia.org/wiki/Convolution) to connected extract features from local regions of an input. Most CNNs contain a combination of convolutional, [pooling](#pooling) and [affine layers](#affine-layer). CNNs have gained popularity particularly through their excellent performance on visual recognition tasks, where they have been setting the state of the art for several years.
 
 * [Stanford CS231n class – Convolutional Neural Networks for Visual Recognition](http://cs231n.github.io/)
 * [Understanding Convolutional Neural Networks for NLP](http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/)
+
+## Context
+
+The context of an LLM is the list of tokens that are provided to the LLM in order to generate the next token in a respons. In case of a chat-bot, this is usually the entire conversation so far up to the maximum context size. The maximum context size thus determines how much information the LLM can still take into account when generating the next response. (This is why chat-bots seem to 'lose the thread' of the conversation after a while.)
 
 ## Data augmentation
 
@@ -192,12 +196,15 @@ The Exploding Gradient Problem is the opposite of the [Vanishing Gradient Proble
 ## Feed-forward
 Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
 
+## Fine-tuning
+Fine-tuning is an example of transfer learning, in which a pre-trained model (usually a [foundation model](#foundation-model) such as BERT or GPT) is trained for additional [epochs](#epoch) on a specific task (such as answering domain-specific queries or providing specifically formatted output).
+
 ## Forward pass
 
 The calculation of the [loss function]("#loss-function") on a given input data batch during [training](#training). The input batch is fed into the model
 
 ## GRU
-The Gated Recurrent Unit is a simplified version of an LSTM unit with fewer parameters. Just like an LSTM cell, it uses a gating mechanism to allow RNNs to efficiently learn long-range dependency by preventing the [vanishing gradient problem](#vanishing-gradient). The GRU consists of a reset and update gate that determine which part of the old memory to keep vs. update with new values at the current time step.
+The Gated Recurrent Unit (GRU) is a simplified version of an LSTM unit with fewer parameters. Just like an LSTM cell, it uses a gating mechanism to allow RNNs to efficiently learn long-range dependency by preventing the [vanishing gradient problem](#vanishing-gradient). The GRU consists of a reset and update gate that determine which part of the old memory to keep vs. update with new values at the current time step.
 
 * [Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation](http://arxiv.org/abs/1406.1078v3)
 * [Recurrent Neural Network Tutorial, Part 4 – Implementing a GRU/LSTM RNN with Python and Theano](http://www.wildml.com/2015/10/recurrent-neural-network-tutorial-part-4-implementing-a-grulstm-rnn-with-python-and-theano/)
@@ -243,7 +250,10 @@ The size of the steps on Gradient descent is called the learning rate. With a hi
 A loss function, or cost function, is a wrapper around our model’s predict function that tells us “how good” the model is at making predictions for a given set of parameters. The loss function has its own curve and its own derivatives. The slope of this curve tells us how to change our parameters to make the model more accurate! We use the model to make predictions. We use the cost function to update our parameters. Our cost function can take a variety of forms as there are many different cost functions available. Popular loss functions include: [MSE (L2)](https://ml-cheatsheet.readthedocs.io/en/latest/loss_functions.html#mse) and [Cross-entropy Loss](https://ml-cheatsheet.readthedocs.io/en/latest/loss_functions.html#loss-cross-entropy).
 
 ## LSTM
-Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
+Long-short-term memory networks (LSTMs) are a form of recurrent neural network (RNN) and are motivated by the "[vanishing gr
+adient problem](#vanishing-gradient)".
+
+`TODO: Add more here.`
 
 ## Max-Pooling
 A [pooling](#pooling) operations typically used in Convolutional Neural Networks. A max-pooling layer selects the maximum value from a patch of features. Just like a convolutional layer, pooling layers are parameterized by a window (patch) size and stride size. For example, we may slide a window of size 2×2 over a 10×10 feature matrix using stride size 2, selecting the max across all 4 values within each window, resulting in a new 5×5 feature matrix.
@@ -285,11 +295,16 @@ Pooling layers often take convolution layers as input. A complicated dataset wit
 ## Pytorch
 Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
 
+## RAG
+Retrieval-augmented Generation (RAG) is a technique that combines a traditional querying system with an LLM. An interaction with the LLM triggers search queries against a database, repository or even the open internet to retrieve relevant data points or documents which are then "contextualized", i.e. they are worked into the LLMs [context](#context). This allows the LLM to then generate a response taking into account the new information from the search result.
+
 ## Receptive field
 Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
 
 ## RNN
-Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
+A Recurrent Neural Network (RNN) is a neural network architecture designed for processing sequential data in which the order of elements is important (i.e text or speech). The output of a neuron representing a specific timestep is fed back into the network for the next time step. 
+
+`TODO: write more here`
 
 ## Relational reasoning
 Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
@@ -309,7 +324,7 @@ Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
 
 ## Softmax
 
-Softmax is a mathematical function that transforms a vector of [logits]("logit") ( $\vec{x} \in \mathbb{R}^N$ ) into a vector of probabilities which all add up to 1.
+Softmax is a mathematical function that transforms a vector of [logits]("#logit") ( $\vec{x} \in \mathbb{R}^N$ ) into a vector of probabilities which all add up to 1.
 
 $$ \text{softmax}(x)_i = \frac{e^{x_i}}{\sum_{j=1}^N e^{x_j}} $$
 
