@@ -1,61 +1,65 @@
 # The Open Source Deep Learning Glossary
 
-Deep learning terminology can be difficult and overwhelming, especially to newcomers. This glossary tries to define the most commonly used terms.
+Deep learning terminology can be difficult and overwhelming, especially to newcomers. This glossary tries to define the most commonly used terms. It was forked and expanded upon from https://github.com/jrdi/dl-glossary.
 
-Since terminology is constantly changing with new terms appearing every day this glossary will be in a permanent work in progress. Feel free to edit or suggest new terms using [issues](https://github.com/jrdi/dl-glossary/issues) and [pull requests](https://github.com/jrdi/dl-glossary/pulls).
+Since terminology is constantly changing with new terms appearing every day this glossary will be in a permanent work in progress. Feel free to make changes and submit pull requests.
 
-## Table of Contents
+To make editing and adding new entries easier, they can be found as individual markdown files in the `entries/` folder. Using the `makefile` (by calling `make`) will automatically sort, index, and collate them into this `README` file. You can also create a PDF version by calling `make buildPDF` (which requires pandoc and LaTeX to be installed).
 
-* [Activation function](#activation-function)
-* [Affine layer](#affine-layer)
-* [Attention mechanism](#attention-mechanism)
-* [Autoencoder](#autoencoder)
-* [Average-Pooling](#average-pooling)
-* [Backpropagation](#backpropagation)
-* [Backward pass](#backward-pass)
-* [Batch](#batch)
-* [Batch normalization](#batch-normalization)
-* [Bias](#bias)
-* [Bias term](#bias-term)
-* [Capsule Network](#capsule-network)
-* [Convolution Neural Network (CNN)](#cnn)
-* [Data augmentation](#data-augmentation)
-* [Dead neuron](#dead-neuron)
-* [Decoder](#decoder)
-* [Dropout](#dropout)
-* [Embedding](#embedding)
-* [Encoder](#encoder)
-* [Epoch](#epoch)
-* [Exploding gradient](#exploding-gradient)
-* [Feed-forward](#feed-forward)
-* [Forward pass](#forward-pass)
-* [Gradient Recurrent Unit (GRU)](#gru)
-* [Graph Convolutional Network (GCN)](#gcn)
-* [Generative Adversarial Network (GAN)](#gan)
-* [Kernel](#kernel)
-* [Layer](#layer)
-* [Learning rate](#learning-rate)
-* [Loss function](#loss-function)
-* [Long Short-Term Memory (LSTM)](#lstm)
-* [Max-Pooling](#max-pooling)
-* [Module](#module)
-* [Multi Layer Perceptron (MLP)](#mlp)
-* [Neuron](#neuron)
-* [Normalization layer](#normalization-layer)
-* [Pooling](#pooling)
-* [Pytorch](#pytorch)
-* [Receptive field](#receptive-field)
-* [Recurrent Neural Network (RNN)](#rnn)
-* [Relational reasoning](#relational-reasoning)
-* [ReLU](#relu)
-* [Residual Networks (ResNet)](#resnet)
-* [Sequence-to-sequence (S2S)](#s2s)
-* [Siamese Neural Network](#siamese-neural-network)
-* [Softmax](#softmax)
-* [Tensorflow](#tensorflow)
-* [Training](#training)
-* [Vanishing gradient](#vanishing-gradient)
-* [Weights](#weights)
+## Table of contents
+
+ * [Activation function](#activation-function)
+ * [Affine layer](#affine-layer)
+ * [Attention mechanism](#attention-mechanism)
+ * [Autoencoder](#autoencoder)
+ * [Average-Pooling](#average-pooling)
+ * [Backpropagation](#backpropagation)
+ * [Backward pass](#backward-pass)
+ * [Batch normalization](#batch-normalization)
+ * [Batch](#batch)
+ * [Bias](#bias)
+ * [Capsule Network](#capsule-network)
+ * [Convolutional Neural Network (CNN)](#cnn)
+ * [Context](#context)
+ * [Data augmentation](#data-augmentation)
+ * [Dead neuron](#dead-neuron)
+ * [Decoder](#decoder)
+ * [Dropout](#dropout)
+ * [Embedding](#embedding)
+ * [Encoder](#encoder)
+ * [Epoch](#epoch)
+ * [Exploding gradient](#exploding-gradient)
+ * [Feed-forward](#feed-forward)
+ * [Fine-tuning](#fine-tuning)
+ * [Forward pass](#forward-pass)
+ * [Generative Adversarial Network (GAN)](#gan)
+ * [Graph Convolutional Network (GCN)](#gcn)
+ * [Gradient Recurrent Unit (GRU)](#gru)
+ * [Kernel](#kernel)
+ * [Latent space](#latent-space)
+ * [Layer](#layer)
+ * [Learning rate](#learning-rate)
+ * [Loss function](#loss-function)
+ * [Long Short-Term Memory (LSTM)](#lstm)
+ * [Max-Pooling](#max-pooling)
+ * [Multi Layer Perceptron (MLP)](#mlp)
+ * [Module](#module)
+ * [Neuron](#neuron)
+ * [Normalization layer](#normalization-layer)
+ * [Pooling](#pooling)
+ * [Pytorch](#pytorch)
+ * [RAG](#rag)
+ * [Receptive field](#receptive-field)
+ * [Relational reasoning](#relational-reasoning)
+ * [ReLU](#relu)
+ * [Residual Networks (ResNet)](#resnet)
+ * [Recurrent Neural Network (RNN)](#rnn)
+ * [Sequence-to-sequence (S2S)](#s2s)
+ * [Siamese Neural Network](#siamese-neural-network)
+ * [Softmax](#softmax)
+ * [Tensorflow](#tensorflow)
+ * [Training](#training)
+ * [Vanishing gradient](#vanishing-gradient)
 
 ***
 
@@ -95,12 +99,6 @@ Backpropagation is an algorithm to efficiently calculate the gradients in a Neur
 
 The calculation of the [gradients](#gradient) of each model parameter relative to the [loss function]("#loss-function") for a given input data batch during [training](#training). This is done using the back-propagation algorithm. Each [batch](#batch) will have undergone a [forward pass]("forward-pass") beforehand in which the loss was calculated.
 
-## Batch
-
-We can’t pass the entire dataset into the neural net at once. So, we divide dataset into Number of Batches or sets or parts.
-
-Just like we divide a big article into multiple sets/batches/parts like Introduction, Gradient descent, Epoch, Batch size and Iterations which makes it easy to read the entire article for the reader and understand it.
-
 ## Batch normalization
 
 Batch Normalization is a technique that normalizes neuronal pre-activations per mini-batch. This avoids extremely large or small pre-actiations that would over- or under-saturate the activation function and thus lead to near-zero gradients. Batch normalization thus accelerates convergence by reducing internal covariate shift inside each batch. 
@@ -112,6 +110,12 @@ Batch Normalization has been found to be very effective for Convolutional and Fe
 * [Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift](http://arxiv.org/abs/1502.03167)
 * [Batch Normalized Recurrent Neural Networks](http://arxiv.org/abs/1510.01378)
 * [Machine Learning Glossary: Batch Normalization](https://ml-cheatsheet.readthedocs.io/en/latest/layers.html#batchnorm)
+
+## Batch
+
+We can’t pass the entire dataset into the neural net at once. So, we divide dataset into Number of Batches or sets or parts.
+
+Just like we divide a big article into multiple sets/batches/parts like Introduction, Gradient descent, Epoch, Batch size and Iterations which makes it easy to read the entire article for the reader and understand it.
 
 ## Bias
 
@@ -203,17 +207,13 @@ Fine-tuning is an example of transfer learning, in which a pre-trained model (us
 
 The calculation of the [loss function]("#loss-function") on a given input data batch during [training](#training). The input batch is fed into the model
 
+## GAN
+## GCN
 ## GRU
 The Gated Recurrent Unit (GRU) is a simplified version of an LSTM unit with fewer parameters. Just like an LSTM cell, it uses a gating mechanism to allow RNNs to efficiently learn long-range dependency by preventing the [vanishing gradient problem](#vanishing-gradient). The GRU consists of a reset and update gate that determine which part of the old memory to keep vs. update with new values at the current time step.
 
 * [Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation](http://arxiv.org/abs/1406.1078v3)
 * [Recurrent Neural Network Tutorial, Part 4 – Implementing a GRU/LSTM RNN with Python and Theano](http://www.wildml.com/2015/10/recurrent-neural-network-tutorial-part-4-implementing-a-grulstm-rnn-with-python-and-theano/)
-
-## GCN
-Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
-
-## GAN
-Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
 
 ## Kernel
 Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
@@ -260,12 +260,10 @@ A [pooling](#pooling) operations typically used in Convolutional Neural Networks
 
 Pooling layers help to reduce the dimensionality of a representation by keeping only the most salient information, and in the case of image inputs, they provide basic invariance to translation (the same maximum values will be selected even if the image is shifted by a few pixels). Pooling layers are typically inserted between successive convolutional layers.
 
+## MLP
 ## Module
 
 A module is a functional unit in a neural network typically consisting of multiple layers which together perform pre-defined functionality, such as a [tranformer](#transformer) or an [encoder]("#encoder").
-
-## MLP
-Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
 
 ## Neuron
 
@@ -301,11 +299,6 @@ Retrieval-augmented Generation (RAG) is a technique that combines a traditional 
 ## Receptive field
 Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
 
-## RNN
-A Recurrent Neural Network (RNN) is a neural network architecture designed for processing sequential data in which the order of elements is important (i.e text or speech). The output of a neuron representing a specific timestep is fed back into the network for the next time step. 
-
-`TODO: write more here`
-
 ## Relational reasoning
 Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
 
@@ -314,6 +307,11 @@ Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
 
 ## ResNet
 Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
+
+## RNN
+A Recurrent Neural Network (RNN) is a neural network architecture designed for processing sequential data in which the order of elements is important (i.e text or speech). The output of a neuron representing a specific timestep is fed back into the network for the next time step. 
+
+`TODO: write more here`
 
 ## S2S
 
@@ -344,7 +342,8 @@ The vanishing gradient problem arises in very deep Neural Networks, typically [R
 
 * [On the difficulty of training recurrent neural networks](http://www.jmlr.org/proceedings/papers/v28/pascanu13.pdf)
 
-----
+***
+
 ## Resources
 
 * https://ml-cheatsheet.readthedocs.io/en/latest/index.html
