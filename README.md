@@ -320,7 +320,8 @@ A Recurrent Neural Network (RNN) is a neural network architecture designed for p
 A sequence-to-sequence (S2S) architecture, is a network architecture that has sequential data (such as text) as both its input and its output. Internally, the input sequences are typically [encoded]("#encoder") in a lower-dimensional context vector. A common example would be a language translation model.
 
 ## Siamese Neural Network
-Be the first to [contribute](https://github.com/jrdi/dl-glossary/pulls)!
+
+A Siamese Neural Network (also called Twin Neural Network) is a neural network that takes two input vectors and aims to predict a difference metric between the two inputs. An example application would be comparing photos of faces to determine whether they depict the same person.
 
 ## Softmax
 
